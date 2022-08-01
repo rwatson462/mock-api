@@ -1,0 +1,10 @@
+version: "3.0"
+services:
+  service:
+    image: php:8.2-rc
+    volumes:
+      - ./src:/var/www
+    ports:
+      - 8000:80
+    working_dir: /var/www
+    command: ["php", "-S", "0.0.0.0:80", "bin/service.php"]
