@@ -2,6 +2,8 @@
 
 namespace MockApi\Route;
 
+use InvalidArgumentException;
+
 readonly class Route {
     public readonly array $headers;
     public readonly array $methods;
@@ -11,7 +13,7 @@ readonly class Route {
         public ?string $response = null,
         public ?int $status = 200,
         ?array $methods = [],
-        ?string $method = 'GET',
+        ?string $method = null,
         array $headers = [],
     ) {
         $this->methods = $this->processRequestMethods($method, $methods);
@@ -29,14 +31,13 @@ readonly class Route {
             return [strtolower($method)];
         }
         
-        if($methods !== null) {
+        if($methods !== null && count($methods) > 0) {
             foreach($methods as &$method) {
                 $method = strtolower($method);
             }
             return $methods;
         }
         
-        // default to GET method if not specified anywhere else 
-        return 'get';
+        throw new InvalidArgumentException('No request methods set for Route.  Either specify `methods[]` or `method` in config');
     }
 }

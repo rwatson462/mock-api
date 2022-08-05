@@ -2,16 +2,22 @@
 
 namespace MockApi\Route;
 
+use RuntimeException;
+use Throwable;
+
 class RouteFactory
 {
-    public static function loadFromIniFile(string $filename): array
+    public static function loadRoutesFromArray(array $routeData): array
     {
-        $fileRoutes = parse_ini_file($filename, true);
-
         $routes = [];
 
-        foreach($fileRoutes as $routeName => $routeConfig) {
-            $routes[$routeName] = new Route(...$routeConfig);
+        foreach($routeData as $routeName => $routeConfig) {
+            try {
+                $routes[$routeName] = new Route(...$routeConfig);
+            } catch (Throwable $t) {
+                // Re-throw the error wrapping the route name in the message
+                throw new RuntimeException("[$routeName] {$t->getMessage()}");
+            }
         }
 
         return $routes;

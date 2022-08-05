@@ -8,14 +8,28 @@ class RouteService
 {
     private array $routes = [];
 
-    public function addRoute(string $routeName, Route $route): void {
-        $this->routes[$routeName] = $route;
+    public function sortRoutes(): self
+    {
+        usort(
+            $this->routes,
+            static fn($routeA, $routeB) => strcmp($routeA->path, $routeB->path)
+        );
+
+        return $this;
     }
 
-    public function addManyRoutes(array $routes): void {
+    public function addRoute(string $routeName, Route $route): self {
+        $this->routes[$routeName] = $route;
+
+        return $this;
+    }
+
+    public function addManyRoutes(array $routes): self {
         foreach($routes as $routeName => $route) {
             $this->addRoute($routeName, $route);
         }
+
+        return $this;
     }
 
     public function find(string $path, string $method): Route {
