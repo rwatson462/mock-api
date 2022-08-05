@@ -1,11 +1,26 @@
 # mock-api
-API mocking service where you define the contract of the responses of your API to validate your other services
+API mocking service where you define the contract of the responses of your API
+to validate your other services.
 
 ## Tech stack
-* Docker compose container
-* PHP 8.2 (beta) built-in server
-* INI files for configuration
-* Anything you like as output files
+* Docker compose container.
+* PHP 8.2 (beta) built-in server.
+* INI files for configuration.
+* Anything you like as output files.
+
+## Prerequisites
+Out of the box, this service requires Docker to be installed and running, but
+you can just as easily run the PHP built in server in the same way by running
+`php -S localhost:8000 src/index.php` (feel free to change the port to suit
+your needs).
+Other than that, this code is written to run in PHP 8.2 - it does not support
+8.1 or lower!  PHP 8.2 is in beta at the time of writing this so I recommend
+the Docker approach to running this so your PHP installation is separated.
+
+## Installation
+Download all the files in this repository, open a terminal and `cd` to the
+directory to placed the files in.  Run `docker compose up -d` to start the
+server.
 
 ## Configuration
 To configure the API responses, you need to set up 2 things:
@@ -33,4 +48,6 @@ To configure the API responses, you need to set up 2 things:
    ; Finally, a filename to direct to the response file
    response=end-point.json
    ```
-2. In the `responses` directory, place files (any file you like) to represent the response that will get sent back to the client.  These are the files referenced in the `response` section of the route configuration.
+2. In the `responses` directory, place files (any file you like) to represent
+   the response that will get sent back to the client.  These are the files
+   referenced in the `response` section of the route configuration.

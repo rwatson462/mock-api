@@ -34,8 +34,7 @@ class RouteService
 
     public function find(string $path, string $method): Route {
         foreach($this->routes as $route) {
-            // @todo use regex to determine a match
-            if($route->path === $path) {
+            if(preg_match("|^$route->path$|", $path)) {
                 if(in_array($method, $route->methods)) {
                     return $route;
                 }

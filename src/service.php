@@ -17,7 +17,6 @@ define('CONFIG_DIR', dirname(__DIR__) . '/config');
 define('ROUTE_DIR', CONFIG_DIR . '/routes');
 define('RESPONSE_DIR', CONFIG_DIR . '/responses');
 
-// Detect any problems loading the config
 try {
     $routeService = (new RouteService)->addManyRoutes(
         RouteFactory::loadRoutesFromArray(
