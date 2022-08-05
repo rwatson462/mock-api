@@ -48,6 +48,8 @@ To configure the API responses, you need to set up 2 things:
    ; Finally, a filename to direct to the response file
    response=end-point.json
    ```
+   The path of your Route can be a regex string so you can return the same
+   response for many urls.
 2. In the `responses` directory, place files (any file you like) to represent
    the response that will get sent back to the client.  These are the files
    referenced in the `response` section of the route configuration.
