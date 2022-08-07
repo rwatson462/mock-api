@@ -1,8 +1,10 @@
 <?php
 
-namespace MockApi\Http;
+namespace App\Domain\Response;
 
-class Response
+use App\Application\Response\ResponseInterface;
+
+class Response implements ResponseInterface
 {
     public int $status = 200;
     public array $headers = [];

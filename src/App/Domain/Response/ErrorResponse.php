@@ -1,13 +1,12 @@
 <?php
 
-namespace MockApi\Http\Response;
+namespace App\Domain\Response;
 
-use MockApi\Http\Header;
-use MockApi\Http\Response;
+use App\Domain\ValueObject\Header;
 
-class NotFoundResponse extends Response
+class ErrorResponse extends Response
 {
-    public int $status = 404;
+    public int $status = 500;
     public array $headers = [];
 
     public function __construct()

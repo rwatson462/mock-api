@@ -1,6 +1,6 @@
 <?php
 
-namespace MockApi\Route\Exception;
+namespace App\Domain\Route;
 
 use RuntimeException;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace MockApi\Http;
+namespace App\Domain\ValueObject;
 
-readonly class Header {
+class Header {
     public function __construct(
-        public string $name,
-        public string $value,
+        public readonly string $name,
+        public readonly string $value,
     ) { }
 
     public function __toString(): string

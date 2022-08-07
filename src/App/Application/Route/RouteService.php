@@ -1,8 +1,9 @@
 <?php
 
-namespace MockApi\Route;
+namespace App\Application\Route;
 
-use MockApi\Route\Exception\RouteNotFoundException;
+use App\Domain\Route\Route;
+use App\Domain\Route\RouteNotFoundException;
 
 class RouteService
 {
